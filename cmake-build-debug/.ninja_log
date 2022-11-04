@@ -1,0 +1,7 @@
+# ninja log v5
+3	1500	6892298676549701	CMakeFiles/untitled.dir/main.cpp.obj	44a2307cc8ff5e39
+1635	1770	6892316981232308	untitled.exe	67f3d786d7cee401
+2	1635	6892316979891420	CMakeFiles/untitled.dir/snake.cpp.obj	dee7a26909708ad5
+3	1345	6892338671250866	CMakeFiles/untitled.dir/main.cpp.obj	bbe712f665cf15ff
+9	1656	6892338674373970	CMakeFiles/untitled.dir/snake.cpp.obj	465657a22c7c5f21
+1656	1797	6892338675771980	untitled.exe	67f3d786d7cee401
