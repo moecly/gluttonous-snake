@@ -1,5 +1,4 @@
 #include <iostream>
-#include <zconf.h>
 #include "snake.h"
 
 using namespace std;

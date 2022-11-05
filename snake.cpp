@@ -52,26 +52,17 @@ typedef enum info {
  */
 snake::snake(void) {
     e.seed(time(nullptr));
-//    SetConsoleOutputCP(437);//改成标准英文输出标志，这样可以使用扩展ASCII码表，以方便后面游戏界面的制作
 
     //创建新的控制台缓冲区
     this->handle = new my_handle();
     this->handle->put = GetStdHandle(STD_OUTPUT_HANDLE);
-//    this->handle->buf = CreateConsoleScreenBuffer(
-//            GENERIC_WRITE,//定义进程可以往缓冲区写数据
-//            FILE_SHARE_WRITE,//定义缓冲区可共享写权限
-//            NULL,
-//            CONSOLE_TEXTMODE_BUFFER,
-//            NULL
-//    );
-//    this->handle->use_buf = false;
-    //隐藏两个缓冲区的光标
+
+    //隐藏缓冲区的光标
     this->handle->coord = {0, 0};
-    //双缓冲处理显示
     this->handle->bytes = 0;
     this->handle->cci.bVisible = 0;
     this->handle->cci.dwSize = 1;
-//    SetConsoleCursorInfo(this->handle->buf, &this->handle->cci);
+
     SetConsoleCursorInfo(this->handle->put, &this->handle->cci);
     this->handle->p = &this->handle->put;
     SetConsoleActiveScreenBuffer(this->handle->p);
@@ -143,11 +134,13 @@ bool snake::print_start(void) {
         if (!is_number(width)) {
             return print_start();
         }
+
         cout << "height: ";
         cin >> height;
         if (!is_number(height)) {
             return print_start();
         }
+
         if (snake_init(stoi(width), stoi(height)) == game_status::succ) {
             return game_status::succ;
         }
@@ -383,9 +376,11 @@ int snake::update_graph(void) {
 int snake::display_score(void) {
     this->handle->coord.Y = this->graph->height / 2 + DISPLAY_Y;
     this->handle->coord.X = 7 + this->graph->width * 2 + DISPLAY_X;
+
     string s = to_string(this->p_my_info->score);
     int n = s.length();
     char score[n];
+
     strcpy(score, s.c_str());
     WriteConsoleOutputCharacterA(*this->handle->p, "score: ", 7, this->handle->coord, &this->handle->bytes);
     this->handle->coord.X += 7;
